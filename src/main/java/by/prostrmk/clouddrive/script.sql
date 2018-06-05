@@ -43,8 +43,17 @@
 -- #   comment varchar(255) NOT NULL,
 -- #   date varchar(25) NOT NULL
 -- # )
-CREATE TABLE CloudDrive.Users(
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  username varchar(255),
-  password varchar(255)
-)
+# DROP TABLE CloudDrive.Files;
+# CREATE TABLE CloudDrive.Files(
+#   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+#   username varchar(255),
+#   serverPath varchar(255),
+#   clientPath varchar(255),
+#   dateAndTime varchar(255)
+# )
+
+# CREATE TABLE CloudDrive.Users(
+#   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+#   username varchar(255),
+#   password varchar(255)
+# )

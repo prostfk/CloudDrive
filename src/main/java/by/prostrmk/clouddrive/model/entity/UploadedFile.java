@@ -7,7 +7,6 @@ import java.util.Objects;
 @Table(name = "Files")
 public class UploadedFile {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -16,11 +15,13 @@ public class UploadedFile {
     private String username;
 
     @Column(name = "serverPath")
-    public String serverPath;
+    private String serverPath;
 
     @Column(name = "clientPath")
-    public String clientPath;
+    private String clientPath;
 
+    @Column(name = "dateAndTime")
+    private String dateAndTime;
 
     public UploadedFile() {
     }
@@ -29,10 +30,13 @@ public class UploadedFile {
         this.username = username;
     }
 
-    public UploadedFile(String username, String serverPath, String clientPath) {
+
+
+    public UploadedFile(String username, String serverPath, String clientPath, String dateAndTime) {
         this.username = username;
         this.serverPath = serverPath;
         this.clientPath = clientPath;
+        this.dateAndTime = dateAndTime;
     }
 
     public Long getId() {
@@ -67,6 +71,14 @@ public class UploadedFile {
         this.clientPath = clientPath;
     }
 
+    public String getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(String dateAndTime) {
+        this.dateAndTime = dateAndTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,13 +87,14 @@ public class UploadedFile {
         return Objects.equals(id, that.id) &&
                 Objects.equals(username, that.username) &&
                 Objects.equals(serverPath, that.serverPath) &&
-                Objects.equals(clientPath, that.clientPath);
+                Objects.equals(clientPath, that.clientPath) &&
+                Objects.equals(dateAndTime, that.dateAndTime);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, username, serverPath, clientPath);
+        return Objects.hash(id, username, serverPath, clientPath, dateAndTime);
     }
 
     @Override
@@ -91,6 +104,7 @@ public class UploadedFile {
                 ", username='" + username + '\'' +
                 ", serverPath='" + serverPath + '\'' +
                 ", clientPath='" + clientPath + '\'' +
+                ", dateAndTime='" + dateAndTime + '\'' +
                 '}';
     }
 }
