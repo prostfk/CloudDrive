@@ -1,4 +1,4 @@
-package by.prostrmk.clouddrive.model;
+package by.prostrmk.clouddrive.dao;
 
 import by.prostrmk.clouddrive.model.entity.UploadedFile;
 import by.prostrmk.clouddrive.model.util.HibernateUtil;

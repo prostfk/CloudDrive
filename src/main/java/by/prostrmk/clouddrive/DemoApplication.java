@@ -1,4 +1,4 @@
-package by.prostrmk.clouddrive.controller;
+package by.prostrmk.clouddrive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
