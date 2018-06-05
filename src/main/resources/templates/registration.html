@@ -53,24 +53,24 @@
 </div>
 
 <script>
-    function doAjax() {
-        $.ajax({
-            url: 'checkPassword',
-            data: ({password: $('#password').val()}),
-            success: function (data) {
-                $('#dataPassword').html(data)
-            }
-        });
-    }
-    function checkUserInDataBase() {
-        $.ajax({
-           url:'checkUser',
-           data: ({username: $('#username').val()}),
-           success: function (data) {
-               $('#dataUsername').html(data)
-           }
-        });
-    }
+    // function doAjax() {
+    //     $.ajax({
+    //         url: 'checkPassword',
+    //         data: ({password: $('#password').val()}),
+    //         success: function (data) {
+    //             $('#dataPassword').html(data)
+    //         }
+    //     });
+    // }
+    // function checkUserInDataBase() {
+    //     $.ajax({
+    //        url:'checkUser',
+    //        data: ({username: $('#username').val()}),
+    //        success: function (data) {
+    //            $('#dataUsername').html(data)
+    //        }
+    //     });
+    // }
 
 </script>
 

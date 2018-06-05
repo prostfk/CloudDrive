@@ -13,9 +13,9 @@ public class UserDao {
         Criteria criteria = session.createCriteria(User.class);
         criteria.add(Restrictions.eq("username", user.getUsername()));
         User baseUser = (User)criteria.uniqueResult();
-        user.setId(baseUser.getId());
         boolean equals;
         try{
+            user.setId(baseUser.getId());
             equals = baseUser.equals(user);
             return equals;
         }catch (Exception e){

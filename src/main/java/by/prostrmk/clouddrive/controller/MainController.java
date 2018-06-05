@@ -34,16 +34,7 @@ public class MainController {
         return "success";
     }
 
-    @RequestMapping(value = "/{username}",method = RequestMethod.GET)
-    @ResponseBody
-    public String getFiles(@PathVariable String username){
-        List<UploadedFile> filesByUsername = new FileDao().getFilesByUsername(username);
-        StringBuilder sb = new StringBuilder();
-        for (UploadedFile uploadedFile : filesByUsername) {
-            sb.append(uploadedFile.toString()).append("\n");
-        }
-        return sb.toString();
-    }
+
 
 
 }

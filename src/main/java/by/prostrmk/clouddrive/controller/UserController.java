@@ -28,7 +28,7 @@ public class UserController {
             return new ModelAndView("message", "message", "you can't using this username");
         }
         if (user.getPassword().equals(user.getConfirmPassword())){
-            HibernateUtil.hashString(user.getPassword());
+            user.setPassword(HibernateUtil.hashString(user.getPassword()));
             DataBaseWork.addToDataBase(user);
             session.setAttribute("user", user);
             return new ModelAndView("message", "message", "Thank you for registration!");
@@ -67,9 +67,9 @@ public class UserController {
     public String logoutPost(HttpSession session){
         if (session.getAttribute("user")!=null){
             session.removeAttribute("user");
-            return "/";
+            return "redirect:/";
         }
-        return "/auth";
+        return "redirect:/auth";
     }
 
 }
