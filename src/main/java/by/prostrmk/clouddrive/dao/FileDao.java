@@ -1,25 +1,14 @@
 package by.prostrmk.clouddrive.dao;
 
-import by.prostrmk.clouddrive.model.entity.UploadedFile;
-import by.prostrmk.clouddrive.model.util.HibernateUtil;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
+import org.apache.log4j.Logger;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.List;
 
-public class FileDao {
+public class FileDao extends AbstractDao implements Dao {
 
-    public List<UploadedFile> getFilesByUsername(String username){
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Criteria criteria = session.createCriteria(UploadedFile.class);
-        criteria.add(Restrictions.eq("username", username));
-        return criteria.list();
-    }
+    private static final Logger LOGGER = Logger.getLogger(FileDao.class);
 
     public void savePic(MultipartFile file, String username){
         if (!file.isEmpty()){
@@ -37,7 +26,7 @@ public class FileDao {
                 stream.flush();
                 stream.close();
             }catch (Exception e){
-                System.err.println(e);
+                LOGGER.error("File error: " + e);
             }
         }
     }

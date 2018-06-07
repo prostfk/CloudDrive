@@ -6,7 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-public class UserDao {
+public class UserDao extends AbstractDao implements Dao{
 
     public boolean checkUser(User user){
         Session session = HibernateUtil.getSessionFactory().openSession();

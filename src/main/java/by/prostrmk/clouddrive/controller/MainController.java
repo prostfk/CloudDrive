@@ -1,6 +1,7 @@
 package by.prostrmk.clouddrive.controller;
 
 import by.prostrmk.clouddrive.dao.FileDao;
+import by.prostrmk.clouddrive.dao.NewsDao;
 import by.prostrmk.clouddrive.model.entity.UploadedFile;
 import by.prostrmk.clouddrive.model.entity.User;
 import by.prostrmk.clouddrive.model.util.DataBaseWork;

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "News")
-public class News {
+public class News implements IEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

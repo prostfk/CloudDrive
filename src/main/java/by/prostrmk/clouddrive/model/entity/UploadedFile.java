@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Files")
-public class UploadedFile {
+public class UploadedFile implements IEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
