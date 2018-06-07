@@ -25,7 +25,6 @@ import java.util.List;
 public class DriveController {
 
     @RequestMapping(value = "/{username}",method = RequestMethod.GET)
-//    @ResponseBody
     public ModelAndView getFiles(@PathVariable String username, HttpSession session){
         User user = (User)session.getAttribute("user");
         if (user == null){

@@ -29,6 +29,12 @@ public class MainController {
         return new ModelAndView("index", "user", user.getUsername());
     }
 
+    @RequestMapping(value = "/news", method = RequestMethod.GET)
+    public ModelAndView getNews(){
+        return null;
+    }
+
+
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public ModelAndView getUpload(HttpSession session){
         if (session.getAttribute("user")==null){
