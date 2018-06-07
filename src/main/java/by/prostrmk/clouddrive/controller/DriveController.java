@@ -36,7 +36,7 @@ public class DriveController {
             return new ModelAndView("index", "user", "Auth");
         }
 
-        List<UploadedFile> filesByUsername = new FileDao().getFilesByUsername(username);
+        List filesByUsername = new FileDao().getByStringParamList("username",username, User.class);
         ModelAndView modelAndView = new ModelAndView("files", "elements", filesByUsername);
         modelAndView.addObject("user", user.getUsername());
         return modelAndView;

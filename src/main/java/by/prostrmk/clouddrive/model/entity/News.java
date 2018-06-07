@@ -1,6 +1,7 @@
 package by.prostrmk.clouddrive.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +23,9 @@ public class News implements IEntity{
 
     @Column(name = "arrayOfLinksToPics")
     private String arrayOfLinksToPics;
+
+    @Transient
+    private transient List<String> pathes;
 
     public News() {
     }
@@ -71,6 +75,14 @@ public class News implements IEntity{
 
     public void setArrayOfLinksToPics(String arrayOfLinksToPics) {
         this.arrayOfLinksToPics = arrayOfLinksToPics;
+    }
+
+    public List<String> getPathes() {
+        return pathes;
+    }
+
+    public void setPathes(List<String> pathes) {
+        this.pathes = pathes;
     }
 
     @Override
