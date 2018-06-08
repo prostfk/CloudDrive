@@ -2,6 +2,7 @@ package by.prostrmk.clouddrive.controller;
 
 import by.prostrmk.clouddrive.dao.FileDao;
 import by.prostrmk.clouddrive.dao.NewsDao;
+import by.prostrmk.clouddrive.model.entity.IEntity;
 import by.prostrmk.clouddrive.model.entity.News;
 import by.prostrmk.clouddrive.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +28,23 @@ public class NewsController {
     NewsDao newsDao = new NewsDao();
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
-    public ModelAndView getNews(){
-
+    public ModelAndView getNews(HttpSession session){
+        User user;
+        if (session.getAttribute("user")!=null){
+            user = (User) session.getAttribute("user");
+        }else{
+            user = new User("Anon");
+        }
         ModelAndView modelAndView = new ModelAndView("news");
         List newsList = newsDao.getAll("id", News.class);
         modelAndView.addObject("newsList", newsList);
-        modelAndView.addObject("user", "Auth");
+        modelAndView.addObject("user", "admin");
         return modelAndView;
     }
 
     @RequestMapping(value = "/news/{id}", method = RequestMethod.GET)
     public ModelAndView getNewsById(@PathVariable Long id){
+
         ModelAndView modelAndView = new ModelAndView("singleNews");
         modelAndView.addObject("news", newsDao.getById(id, News.class));
         modelAndView.addObject("user", "Auth");
@@ -63,7 +70,24 @@ public class NewsController {
         news.setDateOfCreation(new Date().toString());
         newsDao.saveEntity(news);
         return "redirect:/";
+    }
 
+    @RequestMapping(value = "/editNews/{id}", method = RequestMethod.GET)
+    public ModelAndView getEdit(@PathVariable Long id){
+        ModelAndView modelAndView = new ModelAndView("edit");
+        News news = (News) newsDao.getById(id, News.class);
+        modelAndView.addObject("news", news);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/editNews/{id}", method = RequestMethod.POST)
+    public String editNews(@PathVariable Long id, News news, @RequestParam(name = "file") MultipartFile file){
+        FileDao fileDao = new FileDao();
+        fileDao.deleteFile(news.getPathToPic());
+        news.setPathToPic(fileDao.saveFile(file));
+        newsDao.updateEntity(news);
+        return "redirect:/news";
     }
 
 }

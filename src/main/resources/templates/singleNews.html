@@ -57,7 +57,9 @@
             <img th:src="${news.pathToPic}"/>
             <p th:text="${news.content}"></p>
         </div>
-
+        <a th:href="|/editNews/${news.id}|">
+            <button class="w3-button w3-black"></button>
+        </a>
     </div>
 
 

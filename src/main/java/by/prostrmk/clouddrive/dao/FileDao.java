@@ -23,6 +23,15 @@ public class FileDao extends AbstractDao implements Dao {
         return criteria.list();
     }
 
+    public void deleteFile(String path){
+        File file = new File("src/main/webapp/" + path);
+        try{
+            file.delete();
+        }catch (Exception e){
+            LOGGER.error(e);
+        }
+    }
+
     public String saveFile(MultipartFile file){
         String path = null;
             if (!file.isEmpty()){
@@ -51,8 +60,6 @@ public class FileDao extends AbstractDao implements Dao {
 
 
     }
-
-
 
     public void saveFile(MultipartFile file, String username){
         if (!file.isEmpty()){
