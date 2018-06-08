@@ -21,14 +21,14 @@
 
 <div th:include="~{index.html :: navbar}"></div>
 
-<div class="w3-main" style="margin-left:250px">
+<div class="w3-main" >
 
     <div th:each="news : ${newsList}">
-        <div class="w3-card-4">
+        <div class="w3-card-4" style="margin: auto; height: auto; max-width: 1000px;">
             <div class="">
                 <h1 class="w3-text-teal" th:text="${news.title}"></h1>
                 <img th:src="${news.pathToPic}" style="width: 30%; height: 30%;"/>
-                <p th:text="${news.content}"></p>
+                <p th:text="${news.content}" style="text-overflow: ellipsis;"></p>
             </div>
             <div th:if="${user.equals('admin')}">
                 <a th:href="|/editNews/${news.id}|">

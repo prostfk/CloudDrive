@@ -19,12 +19,18 @@ public class UserController {
 
     private User user;
 
+    public UserController() {
+        this.user = new User("anon");
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView returnRegistrationPage(HttpSession session){
+        ModelAndView modelAndView = new ModelAndView("registration");
         if (session.getAttribute("user") != null){
-            return new ModelAndView("redirect:/logout");
+            user = new User("anon");
         }
-        return new ModelAndView("registration","user", new User());
+        modelAndView.addObject("user",user);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/registration",method = RequestMethod.POST)

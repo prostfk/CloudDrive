@@ -73,9 +73,14 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/editNews/{id}", method = RequestMethod.GET)
-    public ModelAndView getEdit(@PathVariable Long id){
+    public ModelAndView getEdit(@PathVariable Long id, HttpSession session){
         ModelAndView modelAndView = new ModelAndView("edit");
         News news = (News) newsDao.getById(id, News.class);
+        if (session.getAttribute("user")!=null){
+            user = (User) session.getAttribute("user");
+        }else{
+            user = new User("anon");
+        }
         modelAndView.addObject("user", user);
         modelAndView.addObject("news", news);
         return modelAndView;
@@ -86,7 +91,9 @@ public class NewsController {
     public String editNews(@PathVariable Long id, News news, @RequestParam(name = "file") MultipartFile file){
         FileDao fileDao = new FileDao();
         fileDao.deleteFile(news.getPathToPic());
-        news.setPathToPic(fileDao.saveFile(file));
+        if (!file.isEmpty()){
+            news.setPathToPic(fileDao.saveFile(file));
+        }
         newsDao.updateEntity(news);
         return "redirect:/news";
     }

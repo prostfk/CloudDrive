@@ -32,26 +32,23 @@ public class MainController {
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public ModelAndView getUpload(HttpSession session){
+        ModelAndView modelAndView = new ModelAndView("upload");
         if (session.getAttribute("user")==null){
             return new ModelAndView("redirect:/auth");
         }
-        return new ModelAndView("upload");
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public @ResponseBody String submit(@RequestParam MultipartFile file, HttpSession session){
+    public String submit(@RequestParam MultipartFile file, HttpSession session){
         User user = (User) session.getAttribute("user");
         new FileDao().saveFile(file, user.getUsername());
         UploadedFile uploadedFile = new UploadedFile(user.getUsername(),"/resources/userFiles/" + user.getUsername() +  "/" + file.getOriginalFilename(),"/users/" + user.getUsername(), new Date().toString());
         DataBaseWork.addToDataBase(uploadedFile);
-        return "success";
+        return "redirect:/personalDisk/" + user.getUsername();
     }
 
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ModelAndView gettestpage(){
-        return new ModelAndView("TEST", "user", "Roman");
-    }
 
 
 }
