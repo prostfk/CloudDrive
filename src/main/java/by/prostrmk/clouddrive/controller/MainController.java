@@ -15,23 +15,16 @@ import java.util.Date;
 @Controller
 public class MainController {
 
+    private User user;
 
-
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public ModelAndView getIndex(HttpSession session){
-        if (session.getAttribute("user") == null){
-            return new ModelAndView("index", "user", "Auth");
-        }
-        User user = (User)session.getAttribute("user");
-
-        return new ModelAndView("index", "user", user.getUsername());
+    public MainController() {
+        user = new User("anon");
     }
 
-    //    @RequestMapping(value = "/news", method = RequestMethod.GET)
-    //    public ModelAndView getNews(){
-//        return null;
-//    }
-
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public ModelAndView getIndex(){
+        return new ModelAndView("index", "user", user);
+    }
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public ModelAndView getUpload(HttpSession session){
@@ -51,6 +44,10 @@ public class MainController {
     }
 
 
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView gettestpage(){
+        return new ModelAndView("TEST", "user", "Roman");
+    }
 
 
 }

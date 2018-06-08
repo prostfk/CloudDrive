@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Thank you</title>
@@ -14,6 +14,9 @@
     </style>
 </head>
 <body>
+
+<div th:include="~{index.html :: navbar}"></div>
+
 
 <div class="w3-content" style="width: 2000px;" >
     <div class="w3-card-4 w3-white" style="max-width: 55%;margin: 2% auto auto;border-radius: 7px;">

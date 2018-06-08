@@ -25,11 +25,11 @@ public class NewsController {
 
 
 //    @Autowired
-    NewsDao newsDao = new NewsDao();
+    private NewsDao newsDao = new NewsDao();
+    private User user;
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public ModelAndView getNews(HttpSession session){
-        User user;
         if (session.getAttribute("user")!=null){
             user = (User) session.getAttribute("user");
         }else{
