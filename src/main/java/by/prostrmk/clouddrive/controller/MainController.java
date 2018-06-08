@@ -22,7 +22,11 @@ public class MainController {
     }
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
-    public ModelAndView getIndex(){
+    public ModelAndView getIndex(HttpSession session){
+        if (session.getAttribute("user")==null){
+            return new ModelAndView("index", "user", user);
+        }
+        user = (User) session.getAttribute("user");
         return new ModelAndView("index", "user", user);
     }
 

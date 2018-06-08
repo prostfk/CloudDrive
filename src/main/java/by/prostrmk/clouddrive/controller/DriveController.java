@@ -24,21 +24,23 @@ import java.util.List;
 @Controller
 public class DriveController {
 
+    private User user;
+
     @RequestMapping(value = "/{username}",method = RequestMethod.GET)
     public ModelAndView getFiles(@PathVariable String username, HttpSession session){
-        User user = (User)session.getAttribute("user");
-//        if (user == null){
-//            return new ModelAndView("redirect:/");
-//        }else if (!user.getUsername().equals(username)){
-//            return new ModelAndView("redirect:/");
-//        }
-//        if (session.getAttribute("user") == null){
-//            return new ModelAndView("index", "user", "Auth");
-//        }
+        if (session.getAttribute("user")!=null){
+            user = (User)session.getAttribute("user");
+            if (!username.equals(user.getUsername())){
+                return new ModelAndView("message", "message", "You have no access to this page");
+            }
+        }else{
+            return new ModelAndView("message", "message", "You have no access to this page");
+        }
+
 
         List filesByUsername = new FileDao().getByStringParamList("username",username, UploadedFile.class);
         ModelAndView modelAndView = new ModelAndView("files", "elements", filesByUsername);
-        modelAndView.addObject("user", "username");
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 

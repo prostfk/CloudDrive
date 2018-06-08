@@ -23,9 +23,9 @@
 
 <div class="w3-main" style="margin-left:250px">
 
-    <div class="w3-row w3-padding-64" th:each="news : ${newsList}">
-        <div class="w3-twothird w3-container">
-            <div class="w3-card-4">
+    <div th:each="news : ${newsList}">
+        <div class="w3-card-4">
+            <div class="">
                 <h1 class="w3-text-teal" th:text="${news.title}"></h1>
                 <img th:src="${news.pathToPic}" style="width: 30%; height: 30%;"/>
                 <p th:text="${news.content}"></p>

@@ -49,7 +49,6 @@ public class UserController {
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
     public ModelAndView checkAuthUser(User user, HttpSession session){
         user.setPassword(HibernateUtil.hashString(user.getPassword()));
-        System.out.println(user.getPassword());
         if (new UserDao().checkUser(user)){
             session.setAttribute("user", user);
             return new ModelAndView("redirect:/");

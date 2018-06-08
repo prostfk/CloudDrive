@@ -16,6 +16,11 @@ public class FileController {
 
     private User user;
 
+    public FileController() {
+        this.user = new User("anon");
+    }
+
+
     @RequestMapping(value = "/personalDisk/{username}")
     public ModelAndView personalDisk(@PathVariable String username, HttpSession session){
 
@@ -25,7 +30,7 @@ public class FileController {
                 return new ModelAndView("redirect:/");
             }
         }else{
-            session.setAttribute("user", "anon");
+            session.setAttribute("user", user);
             return new ModelAndView("redirect:/");
         }
         List filesByUsername = new FileDao().getByStringParamList("username",username, UploadedFile.class);

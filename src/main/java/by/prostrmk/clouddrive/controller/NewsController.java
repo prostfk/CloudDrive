@@ -38,7 +38,7 @@ public class NewsController {
         ModelAndView modelAndView = new ModelAndView("news");
         List newsList = newsDao.getAll("id", News.class);
         modelAndView.addObject("newsList", newsList);
-        modelAndView.addObject("user", "admin");
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 
@@ -47,7 +47,7 @@ public class NewsController {
 
         ModelAndView modelAndView = new ModelAndView("singleNews");
         modelAndView.addObject("news", newsDao.getById(id, News.class));
-        modelAndView.addObject("user", "Auth");
+        modelAndView.addObject("user", user);
 
         return modelAndView;
     }
@@ -76,6 +76,7 @@ public class NewsController {
     public ModelAndView getEdit(@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("edit");
         News news = (News) newsDao.getById(id, News.class);
+        modelAndView.addObject("user", user);
         modelAndView.addObject("news", news);
         return modelAndView;
     }

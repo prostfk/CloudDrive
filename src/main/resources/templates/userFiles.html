@@ -24,7 +24,7 @@
         <div th:unless="${file.serverPath.endsWith('.jpg')}">
             <h6 th:text="${files.toString()}"></h6>
         </div>
-        <div th:if="${files.serverPath.endsWith('.jpg')}">
+        <div th:if="${file.serverPath.endsWith('.jpg')}">
             <img th:src="${file.serverPath}"/>
         </div>
     </div>
