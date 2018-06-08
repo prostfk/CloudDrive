@@ -21,20 +21,17 @@ public class News implements IEntity{
     @Column(name = "dateOfCreation")
     private String dateOfCreation;
 
-    @Column(name = "arrayOfLinksToPics")
-    private String arrayOfLinksToPics;
-
-    @Transient
-    private transient List<String> pathes;
+    @Column(name = "pathToPic")
+    private String pathToPic;
 
     public News() {
     }
 
-    public News(String title, String content, String dateOfCreation, String arrayOfLinksToPics) {
+    public News(String title, String content, String dateOfCreation, String pathToPic) {
         this.title = title;
         this.content = content;
         this.dateOfCreation = dateOfCreation;
-        this.arrayOfLinksToPics = arrayOfLinksToPics;
+        this.pathToPic = pathToPic;
     }
 
     public Long getId() {
@@ -69,20 +66,12 @@ public class News implements IEntity{
         this.dateOfCreation = dateOfCreation;
     }
 
-    public String getArrayOfLinksToPics() {
-        return arrayOfLinksToPics;
+    public String getPathToPic() {
+        return pathToPic;
     }
 
-    public void setArrayOfLinksToPics(String arrayOfLinksToPics) {
-        this.arrayOfLinksToPics = arrayOfLinksToPics;
-    }
-
-    public List<String> getPathes() {
-        return pathes;
-    }
-
-    public void setPathes(List<String> pathes) {
-        this.pathes = pathes;
+    public void setPathToPic(String pathToPic) {
+        this.pathToPic = pathToPic;
     }
 
     @Override
@@ -94,13 +83,13 @@ public class News implements IEntity{
                 Objects.equals(title, news.title) &&
                 Objects.equals(content, news.content) &&
                 Objects.equals(dateOfCreation, news.dateOfCreation) &&
-                Objects.equals(arrayOfLinksToPics, news.arrayOfLinksToPics);
+                Objects.equals(pathToPic, news.pathToPic);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, title, content, dateOfCreation, arrayOfLinksToPics);
+        return Objects.hash(id, title, content, dateOfCreation, pathToPic);
     }
 
     @Override
@@ -110,7 +99,7 @@ public class News implements IEntity{
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", dateOfCreation='" + dateOfCreation + '\'' +
-                ", arrayOfLinksToPics='" + arrayOfLinksToPics + '\'' +
+                ", pathToPic='" + pathToPic + '\'' +
                 '}';
     }
 }

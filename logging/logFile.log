@@ -1,1 +1,4 @@
 2018-06-05 20:13:51 ERROR DataBaseWork:24 - Hibernate Connection Error
+2018-06-08 11:45:58 ERROR AbstractDao:57 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.News
+2018-06-08 11:48:21 ERROR AbstractDao:57 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.News
+2018-06-08 11:50:20 ERROR AbstractDao:57 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.News

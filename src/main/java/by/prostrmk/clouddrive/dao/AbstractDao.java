@@ -37,11 +37,16 @@ public class AbstractDao implements Dao {
         return criteria.list();
     }
 
+    @Override
+    public List getAll(String param, Class clazz) {
+        return HibernateUtil.getSessionFactory().openSession().createCriteria(clazz).list();
+
+    }
 
     @Override
     public List getLatest(String tableName, int count) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return session.createQuery("FROM " + tableName + "ORDER BY id DESC").setMaxResults(count).list();
+        return session.createQuery("SELECT * FROM " + tableName + "ORDER BY id DESC").setMaxResults(count).list();
 
     }
 

@@ -59,7 +59,7 @@
 
         <input class="w3-input" placeholder="title" th:field="*{title}" />
         <textarea class="w3-input" placeholder="content" th:field="*{content}" style="resize: none" ></textarea>
-        <input class="w3-input" placeholder="mediaFiles" th:field="*{arrayOfLinksToPics}" required multiple type="file" name="file" formenctype="multipart/form-data"/>
+        <input class="w3-input" placeholder="mediaFiles" type="file" name="file" formenctype="multipart/form-data"/>
         <input type="submit" class="w3-button w3-padding-large w3-white w3-border" placeholder="Save"/>
 
     </form>

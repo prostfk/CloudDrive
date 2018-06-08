@@ -52,7 +52,7 @@
 
     <div class="w3-row w3-padding-64">
         <div class="w3-row w3-padding-64" th:each="element : ${elements}">
-            <div th:if="${element.serverPath.endsWith('.pdf')}">
+            <div th:unless="${element.serverPath.endsWith('.jpg')}">
                 <h6 th:text="${element.toString()}"></h6>
             </div>
             <div th:if="${element.serverPath.endsWith('.jpg')}">

@@ -6,6 +6,7 @@ import by.prostrmk.clouddrive.model.entity.News;
 import by.prostrmk.clouddrive.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,18 +24,24 @@ public class NewsController {
 
 
 //    @Autowired
-//    NewsDao newsDao;
+    NewsDao newsDao = new NewsDao();
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public ModelAndView getNews(){
+
         ModelAndView modelAndView = new ModelAndView("news");
-        List<News> news = new NewsDao().getLatest("News", 5);
-        List<String> pics = new ArrayList<>();
-        for (News news1 : news) {
-            pics.addAll(Arrays.asList(news1.getArrayOfLinksToPics().split(",")));
-        }
-        modelAndView.addObject("news", news);
-        modelAndView.addObject("pics",pics);
+        List newsList = newsDao.getAll("id", News.class);
+        modelAndView.addObject("newsList", newsList);
+        modelAndView.addObject("user", "Auth");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/news/{id}", method = RequestMethod.GET)
+    public ModelAndView getNewsById(@PathVariable Long id){
+        ModelAndView modelAndView = new ModelAndView("singleNews");
+        modelAndView.addObject("news", newsDao.getById(id, News.class));
+        modelAndView.addObject("user", "Auth");
+
         return modelAndView;
     }
 
@@ -51,11 +58,12 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/createNews",method = RequestMethod.POST)
-    public String SubmitNewsCreation(@RequestParam(name = "file") MultipartFile[] files,  News news){
-        news.setArrayOfLinksToPics(new FileDao().saveFile(files));
+    public String SubmitNewsCreation(@RequestParam(name = "file") MultipartFile file,  News news){
+        news.setPathToPic(new FileDao().saveFile(file));
         news.setDateOfCreation(new Date().toString());
-        new NewsDao().saveEntity(news);
+        newsDao.saveEntity(news);
         return "redirect:/";
+
     }
 
 }

@@ -14,6 +14,8 @@
         <mapping package="by.prostrmk.clouddrive.model.entity"/>
         <mapping class="by.prostrmk.clouddrive.model.entity.User"/>
         <mapping class="by.prostrmk.clouddrive.model.entity.UploadedFile"/>
+        <mapping class="by.prostrmk.clouddrive.model.entity.News"/>
+
 
     </session-factory>
 </hibernate-configuration>

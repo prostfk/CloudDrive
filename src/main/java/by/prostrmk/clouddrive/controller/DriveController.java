@@ -27,18 +27,18 @@ public class DriveController {
     @RequestMapping(value = "/{username}",method = RequestMethod.GET)
     public ModelAndView getFiles(@PathVariable String username, HttpSession session){
         User user = (User)session.getAttribute("user");
-        if (user == null){
-            return new ModelAndView("redirect:/");
-        }else if (!user.getUsername().equals(username)){
-            return new ModelAndView("redirect:/");
-        }
-        if (session.getAttribute("user") == null){
-            return new ModelAndView("index", "user", "Auth");
-        }
+//        if (user == null){
+//            return new ModelAndView("redirect:/");
+//        }else if (!user.getUsername().equals(username)){
+//            return new ModelAndView("redirect:/");
+//        }
+//        if (session.getAttribute("user") == null){
+//            return new ModelAndView("index", "user", "Auth");
+//        }
 
-        List filesByUsername = new FileDao().getByStringParamList("username",username, User.class);
+        List filesByUsername = new FileDao().getByStringParamList("username",username, UploadedFile.class);
         ModelAndView modelAndView = new ModelAndView("files", "elements", filesByUsername);
-        modelAndView.addObject("user", user.getUsername());
+        modelAndView.addObject("user", "username");
         return modelAndView;
     }
 
