@@ -24,5 +24,18 @@ public class UserDao extends AbstractDao implements Dao{
 
     }
 
+    public boolean checkUser(String username){
+        User user = new User(username);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.add(Restrictions.eq("username", user.getUsername()));
+        User baseUser = (User)criteria.uniqueResult();
+        try{
+            return username.equals(baseUser.getUsername());
+        }catch (NullPointerException e){
+            return false;
+        }
+    }
+
 
 }

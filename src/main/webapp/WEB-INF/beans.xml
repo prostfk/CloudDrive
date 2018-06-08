@@ -11,5 +11,6 @@
     <bean id="fileDao" class="by.prostrmk.clouddrive.dao.FileDao"/>
     <bean id="userDao" class="by.prostrmk.clouddrive.dao.UserDao"/>
     <bean id="newsDao" class="by.prostrmk.clouddrive.dao.NewsDao"/>
+    <bean id="defaultUser" class="by.prostrmk.clouddrive.model.entity.User"/>
 
 </beans>

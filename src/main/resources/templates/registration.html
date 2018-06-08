@@ -38,6 +38,7 @@
 
                 <input class="w3-input" type="password" placeholder="confirm password" th:field="*{confirmPassword}"
                        id="againPassword"/>
+                <span style="float: right;" id="submitPassword"></span>
 
 
                 <button class="w3-btn w3-white w3-border w3-border-blue w3-round" style=";margin-top:2%;" type="submit">
@@ -55,25 +56,34 @@
 </div>
 
 <script>
-    // function doAjax() {
-    //     $.ajax({
-    //         url: 'checkPassword',
-    //         data: ({password: $('#password').val()}),
-    //         success: function (data) {
-    //             $('#dataPassword').html(data)
-    //         }
-    //     });
-    // }
-    // function checkUserInDataBase() {
-    //     $.ajax({
-    //        url:'checkUser',
-    //        data: ({username: $('#username').val()}),
-    //        success: function (data) {
-    //            $('#dataUsername').html(data)
-    //        }
-    //     });
-    // }
-
+    function doAjax() {
+        $.ajax({
+            url: 'checkPassword',
+            data: ({password: $('#password').val()}),
+            success: function (data) {
+                $('#dataPassword').html(data)
+            }
+        });
+    }
+    function checkUserInDataBase() {
+        $.ajax({
+            url:'checkUsername',
+            data: ({username: $('#username').val()}),
+            success: function (data) {
+                $('#dataUsername').html(data)
+            }
+        });
+    }
+    function checkPasswordMatching() {
+        $.ajax({
+            url: 'checkMatching',
+            data: ({password: $('#password').val(),
+                    againPassword:$('#againPassword').val()}),
+            success: function (data) {
+                $('#submitPassword').html(data)
+            }
+        });
+    }
 </script>
 
 </body>

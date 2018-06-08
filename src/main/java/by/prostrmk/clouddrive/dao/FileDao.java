@@ -1,15 +1,16 @@
 package by.prostrmk.clouddrive.dao;
 
 import by.prostrmk.clouddrive.model.entity.UploadedFile;
-import by.prostrmk.clouddrive.model.entity.User;
 import by.prostrmk.clouddrive.model.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 public class FileDao extends AbstractDao implements Dao {
@@ -48,7 +49,6 @@ public class FileDao extends AbstractDao implements Dao {
                     stream.write(bytes);
                     stream.flush();
                     stream.close();
-//                    path = pathName;
                     path = "/resources/static/newsData/" +  name;
                 } catch (IOException e) {
                     LOGGER.error(e);
@@ -81,5 +81,7 @@ public class FileDao extends AbstractDao implements Dao {
             }
         }
     }
+
+
 
 }
