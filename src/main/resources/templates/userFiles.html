@@ -20,16 +20,18 @@
 <div th:include="~{index.html :: navbar}"></div>
 
 <div class="w3-row w3-padding-64">
-    <div class="w3-row w3-padding-64" th:each="file : ${files}">
-        <div th:unless="${file.serverPath.endsWith('.jpg')}">
-            <h6 th:text="${files.toString()}"></h6>
-        </div>
-        <div th:if="${file.serverPath.endsWith('.jpg')}">
-            <img th:src="${file.serverPath}"/>
-        </div>
+
+    <div class="w3-third w3-center" th:each="file : ${files}">
+        <i class="fa fa-file-o w3-padding-64 w3-text-red w3-margin-right"></i>
+        <h6 th:text="${file.getServerPath()}"></h6>
+        <a th:href="|/${user.getUsername()}/download/${file.getServerPath().split('/')[4]}|">
+            <button class="w3-button w3-black w3-margin-top">Download file</button>
+        </a>
     </div>
 </div>
-
+<a href="/upload">
+    <button class="w3-button w3-black w3-margin-top">Upload</button>
+</a>
 
 
 </body>

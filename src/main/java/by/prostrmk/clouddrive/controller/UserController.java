@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
+    private User user;
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView returnRegistrationPage(HttpSession session){
         if (session.getAttribute("user") != null){
@@ -58,8 +60,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(){
-        return "logout";
+    public ModelAndView logout(HttpSession session){
+        if (session.getAttribute("user")!=null){
+            user = (User) session.getAttribute("user");
+            return new ModelAndView("logout", "user", user);
+        }else{
+            return new ModelAndView("redirect:/");
+        }
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
