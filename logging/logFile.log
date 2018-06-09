@@ -2,3 +2,6 @@
 2018-06-08 11:45:58 ERROR AbstractDao:57 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.News
 2018-06-08 11:48:21 ERROR AbstractDao:57 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.News
 2018-06-08 11:50:20 ERROR AbstractDao:57 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.News
+2018-06-09 19:00:07 ERROR AbstractDao:62 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.SharedFile
+2018-06-09 19:00:22 ERROR AbstractDao:62 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.SharedFile
+2018-06-09 19:00:28 ERROR AbstractDao:62 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.SharedFile

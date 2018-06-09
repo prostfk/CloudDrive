@@ -15,6 +15,7 @@
         <mapping class="by.prostrmk.clouddrive.model.entity.User"/>
         <mapping class="by.prostrmk.clouddrive.model.entity.UploadedFile"/>
         <mapping class="by.prostrmk.clouddrive.model.entity.News"/>
+        <mapping class="by.prostrmk.clouddrive.model.entity.SharedFile"/>
 
 
     </session-factory>
