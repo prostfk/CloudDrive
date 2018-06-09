@@ -1,6 +1,7 @@
 package by.prostrmk.clouddrive.controller;
 
 import by.prostrmk.clouddrive.dao.FileDao;
+import by.prostrmk.clouddrive.model.entity.IEntity;
 import by.prostrmk.clouddrive.model.entity.SharedFile;
 import by.prostrmk.clouddrive.model.entity.UploadedFile;
 import by.prostrmk.clouddrive.model.entity.User;
@@ -45,22 +46,41 @@ public class FileController {
     public String setPublicFile(@PathVariable String username, @PathVariable Long id){
         FileDao fileDao = new FileDao();
         UploadedFile file = (UploadedFile) fileDao.getById(id, UploadedFile.class);
-        SharedFile sharedFile = null;
+        SharedFile sharedFile;
         if (fileDao.getByStringParamUnique("username", username, SharedFile.class) == null){
             sharedFile = new SharedFile(username, file.getServerPath());
             fileDao.saveEntity(sharedFile);
         }else{
             sharedFile = (SharedFile) fileDao.getByStringParamUnique("username", username, SharedFile.class);
             UploadedFile uplfile = (UploadedFile) fileDao.getById(id, UploadedFile.class);
-            sharedFile.setFiles(sharedFile.getFiles() + "," + uplfile.getServerPath());
-            fileDao.updateEntity(sharedFile);
+            if (!sharedFile.getFiles().contains(uplfile.getServerPath())){
+                sharedFile.setFiles(sharedFile.getFiles() + "," + uplfile.getServerPath());
+                fileDao.updateEntity(sharedFile);
+            }
         }
-
         return "redirect:/personalDisk/" + username;
-
-
-
     }
 
+
+    @RequestMapping(value = "/sharedFiles/{username}", method = RequestMethod.GET)
+    public ModelAndView sharedUserFiles(@PathVariable String username, HttpSession session){
+        FileDao fileDao = new FileDao();
+        User user = session.getAttribute("user") != null ? (User)session.getAttribute("user") : new User("anon");
+        SharedFile sharedFile = (SharedFile)fileDao.getByStringParamUnique("username", username, SharedFile.class);
+        if (sharedFile == null || sharedFile.getFiles() == null){
+            ModelAndView output = new ModelAndView("message", "message", "this user has no shared files");
+            output.addObject("user", user);
+            return output;
+        }
+        String []files = sharedFile.getFiles().split(",");
+        UploadedFile []uploadedFiles = new UploadedFile[files.length];
+        for (int i = 0; i < files.length; i++) {
+            uploadedFiles[i] = new UploadedFile(username, files[i], "", "");
+        }
+        ModelAndView modelAndView = new ModelAndView("sharedFiles");
+        modelAndView.addObject("files", uploadedFiles);
+        modelAndView.addObject("user",user);
+        return modelAndView;
+    }
 
 }
