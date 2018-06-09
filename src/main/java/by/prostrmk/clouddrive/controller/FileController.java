@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,16 +27,9 @@ public class FileController {
 
     @RequestMapping(value = "/personalDisk/{username}")
     public ModelAndView personalDisk(@PathVariable String username, HttpSession session){
-
-        if (session.getAttribute("user")!=null){
-            user = (User) session.getAttribute("user");
-            if (!user.getUsername().equals(username)){
-                return new ModelAndView("redirect:/");
-            }
-        }else{
-            session.setAttribute("user", user);
-            return new ModelAndView("redirect:/");
-        }
+        User user = (User) session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User("anon");
+        if (user.getUsername().equals("anon")){ return new ModelAndView("redirect:/auth");}
+        if (!user.getUsername().equals(username)){return new ModelAndView("redirect:/");}
         List filesByUsername = new FileDao().getByStringParamList("username",username, UploadedFile.class);
         ModelAndView modelAndView = new ModelAndView("userFiles", "files", filesByUsername);
         modelAndView.addObject("user", user);
@@ -81,6 +75,21 @@ public class FileController {
         modelAndView.addObject("files", uploadedFiles);
         modelAndView.addObject("user",user);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/sharedFiles", method = RequestMethod.GET)
+    public ModelAndView sharedFiles(HttpSession session){
+        ModelAndView mav = new ModelAndView("sharedFilesIndex");
+        FileDao fileDao = new FileDao();
+        List<SharedFile> allUsers = fileDao.getAll("username", SharedFile.class);
+        List<String> users = new ArrayList<>();
+        for (SharedFile allUser : allUsers) {
+            users.add(allUser.getUsername());
+        }
+        mav.addObject("users", users);
+        User user = (User) session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User("anon");
+        mav.addObject("user", user);
+        return mav;
     }
 
 }

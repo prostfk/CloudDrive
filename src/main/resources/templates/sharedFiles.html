@@ -27,14 +27,24 @@
         <a th:href="|/${user.getUsername()}/download/${file.getServerPath().split('/')[4]}|">
             <i class="fa fa-download"></i>
         </a><br/>
-        <form method="post" th:action="@{/personalDisk/{username}/share/{id}(username=${user.getUsername()}, id=${file.getId()})}">
-            <button type="submit">
-                <i class="fa fa-share"></i>
-            </button>
-        </form>
+        <!--<form method="post" th:action="@{/personalDisk/{username}/share/{id}(username=${user.getUsername()}, id=${file.getId()})}">-->
+            <!--<button type="submit">-->
+                <!--<i class="fa fa-share"></i>-->
+            <!--</button>-->
+        <!--</form>-->
 
     </div>
 </div>
-
+<script>
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+</script>
 </body>
 </html>
