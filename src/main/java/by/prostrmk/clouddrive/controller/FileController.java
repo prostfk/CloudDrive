@@ -6,6 +6,7 @@ import by.prostrmk.clouddrive.model.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -39,6 +40,10 @@ public class FileController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/personalDisk/{username}/share/{id}", method = RequestMethod.POST)
+    public String setPublicFile(@PathVariable String username, @PathVariable Long id, UploadedFile file){
+
+    }
 
 
 }

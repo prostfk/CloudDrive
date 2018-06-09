@@ -57,12 +57,18 @@
 #   username varchar(255),
 #   password varchar(255)
 # )
-DROP TABLE CloudDrive.News;
+# DROP TABLE CloudDrive.News;
+#
+# CREATE TABLE CloudDrive.News(
+#   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+#   title varchar(255),
+#   content text,
+#   pathToPic text,
+#   dateOfCreation varchar(255)
+# )
 
-CREATE TABLE CloudDrive.News(
+CREATE TABLE CloudDrive.SharedFiles(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  title varchar(255),
-  content text,
-  pathToPic text,
-  dateOfCreation varchar(255)
+  username VARCHAR(255),
+  files text
 )

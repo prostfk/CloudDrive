@@ -42,6 +42,9 @@ public class MainController {
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String submit(@RequestParam MultipartFile file, HttpSession session){
+        if (file.isEmpty()){
+            return "redirect:/personalDisk/" + user.getUsername();
+        }
         User user = (User) session.getAttribute("user");
         new FileDao().saveFile(file, user.getUsername());
         UploadedFile uploadedFile = new UploadedFile(user.getUsername(),"/resources/userFiles/" + user.getUsername() +  "/" + file.getOriginalFilename(),"/users/" + user.getUsername(), new Date().toString());
