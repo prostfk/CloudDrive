@@ -51,10 +51,11 @@ public class UserController {
 
     @RequestMapping(value = "/auth", method = RequestMethod.GET)
     public ModelAndView returnAuthPage(HttpSession session){
+        User user = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User("anon");
         if (session.getAttribute("user") != null){
             return new ModelAndView("redirect:/logout");
         }
-        return new ModelAndView("auth", "user", new User());
+        return new ModelAndView("auth", "user", user);
     }
 
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
