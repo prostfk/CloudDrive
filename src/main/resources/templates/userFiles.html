@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/static/css/animate.css"/>
     <style>
         body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-anchor,.fa-file-o {font-size:200px}
     </style>
 </head>
-<body>
+<body class="animated fadeIn">
 
 <div th:include="~{index.html :: navbar}"></div>
 
@@ -29,7 +30,7 @@
             <i class="fa fa-download"></i>
         </a><br/>
         <form method="post" th:action="@{/personalDisk/{username}/share/{id}(username=${user.getUsername()}, id=${file.getId()})}">
-            <button type="submit">
+            <button type="submit" onclick="submitSharing()">
                 <i class="fa fa-share"></i>
             </button>
         </form>
@@ -41,6 +42,12 @@
 </a>
 
 <script>
+    function submitSharing() {
+        if (!confirm("You want to share this file")){
+            location.reload();
+        }
+    }
+
     // Used to toggle the menu on small screens when clicking on the menu button
     function myFunction() {
         var x = document.getElementById("navDemo");
