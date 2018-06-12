@@ -10,7 +10,6 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             file:src/main/webapp/WEB-INF/applicationSecurity.xml
-
         </param-value>
     </context-param>
     
