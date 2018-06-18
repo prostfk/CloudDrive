@@ -23,9 +23,9 @@
 
     <div class="w3-third w3-center" th:each="file : ${files}">
         <i class="fa fa-file-o w3-padding-64 w3-text-red w3-margin-right"></i>
-        <h6 th:text="${file.getServerPath().split('/')[4]}"></h6>
+        <h6 th:text="${file.getPath().split('/')[4]}"></h6>
         <p th:text="${file.getUsername()}" style="font-size: 10px;"></p>
-        <a th:href="|/${user.getUsername()}/download/${file.getServerPath().split('/')[4]}|">
+        <a th:href="|/${file.getPath().split('/')[3]}/download/${file.getPath().split('/')[4]}|">
             <i class="fa fa-download"></i>
         </a><br/>
         <!--<form method="post" th:action="@{/personalDisk/{username}/share/{id}(username=${user.getUsername()}, id=${file.getId()})}">-->

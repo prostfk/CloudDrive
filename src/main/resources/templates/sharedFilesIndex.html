@@ -13,10 +13,18 @@
         body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-user-o {font-size:200px}
+
     </style>
 </head>
 <body class="animated fadeIn">
 <div th:include="~{index.html :: navbar}"></div>
+<form action="/searchSharedUser">
+    <input class="w3-input w3-border w3-animated-input" type="text" name="person" placeholder="Search user">
+</form>
+<form action="/searchSharedFiles">
+    <input class="w3-input w3-border w3-animated-input" type="text" name="filename" placeholder="Search file">
+</form>
+
 
 <div class="w3-row w3-padding-64">
     <div class="w3-third w3-center" th:each="singleUser : ${users}">

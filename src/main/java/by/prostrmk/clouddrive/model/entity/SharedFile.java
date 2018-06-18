@@ -1,6 +1,7 @@
 package by.prostrmk.clouddrive.model.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "SharedFiles")
@@ -10,8 +11,8 @@ public class SharedFile implements IEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "files")
-    private String files;
+    @Column(name = "path")
+    private String path;
 
     @Column(name = "username")
     private String username;
@@ -19,8 +20,8 @@ public class SharedFile implements IEntity{
     public SharedFile() {
     }
 
-    public SharedFile(String username, String files) {
-        this.files = files;
+    public SharedFile(String username, String path) {
+        this.path = path;
         this.username = username;
     }
 
@@ -32,12 +33,12 @@ public class SharedFile implements IEntity{
         this.id = id;
     }
 
-    public String getFiles() {
-        return files;
+    public String getPath() {
+        return path;
     }
 
-    public void setFiles(String files) {
-        this.files = files;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getUsername() {
@@ -46,5 +47,29 @@ public class SharedFile implements IEntity{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SharedFile that = (SharedFile) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(path, that.path) &&
+                Objects.equals(username, that.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, path, username);
+    }
+
+    @Override
+    public String toString() {
+        return "SharedFile{" +
+                "id=" + id +
+                ", path='" + path + '\'' +
+                ", username='" + username + '\'' +
+                '}';
     }
 }

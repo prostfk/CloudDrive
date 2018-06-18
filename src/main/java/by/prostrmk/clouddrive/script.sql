@@ -67,8 +67,10 @@
 #   dateOfCreation varchar(255)
 # )
 
-CREATE TABLE CloudDrive.SharedFiles(
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  username VARCHAR(255),
-  files text
-)
+# CREATE TABLE CloudDrive.SharedFiles(
+#   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+#   username VARCHAR(255),
+#   path VARCHAR(255)
+# )
+
+# DROP TABLE CloudDrive.SharedFiles;

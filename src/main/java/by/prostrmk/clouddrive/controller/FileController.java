@@ -6,12 +6,14 @@ import by.prostrmk.clouddrive.model.entity.SharedFile;
 import by.prostrmk.clouddrive.model.entity.UploadedFile;
 import by.prostrmk.clouddrive.model.entity.User;
 import by.prostrmk.clouddrive.model.util.DataBaseWork;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,18 +47,8 @@ public class FileController {
     public String setPublicFile(@PathVariable String username, @PathVariable Long id) {
         FileDao fileDao = new FileDao();
         UploadedFile file = (UploadedFile) fileDao.getById(id, UploadedFile.class);
-        SharedFile sharedFile;
-        if (fileDao.getByStringParamUnique("username", username, SharedFile.class) == null) {
-            sharedFile = new SharedFile(username, file.getServerPath());
-            fileDao.saveEntity(sharedFile);
-        } else {
-            sharedFile = (SharedFile) fileDao.getByStringParamUnique("username", username, SharedFile.class);
-            UploadedFile uplfile = (UploadedFile) fileDao.getById(id, UploadedFile.class);
-            if (!sharedFile.getFiles().contains(uplfile.getServerPath())) {
-                sharedFile.setFiles(sharedFile.getFiles() + "," + uplfile.getServerPath());
-                fileDao.updateEntity(sharedFile);
-            }
-        }
+        SharedFile sharedFile = new SharedFile(username, file.getServerPath());
+        fileDao.saveEntity(sharedFile);
         return "redirect:/personalDisk/" + username;
     }
 
@@ -65,19 +57,9 @@ public class FileController {
     public ModelAndView sharedUserFiles(@PathVariable String username, HttpSession session) {
         FileDao fileDao = new FileDao();
         User user = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User("anon");
-        SharedFile sharedFile = (SharedFile) fileDao.getByStringParamUnique("username", username, SharedFile.class);
-        if (sharedFile == null || sharedFile.getFiles() == null) {
-            ModelAndView output = new ModelAndView("message", "message", "this user has no shared files");
-            output.addObject("user", user);
-            return output;
-        }
-        String[] files = sharedFile.getFiles().split(",");
-        UploadedFile[] uploadedFiles = new UploadedFile[files.length];
-        for (int i = 0; i < files.length; i++) {
-            uploadedFiles[i] = new UploadedFile(username, files[i], "", "");
-        }
+        List<SharedFile> sharedFiles = (List<SharedFile>) fileDao.getByStringParamList("username", username, SharedFile.class);
         ModelAndView modelAndView = new ModelAndView("sharedFiles");
-        modelAndView.addObject("files", uploadedFiles);
+        modelAndView.addObject("files", sharedFiles);
         modelAndView.addObject("user", user);
         return modelAndView;
     }
@@ -89,7 +71,9 @@ public class FileController {
         List<SharedFile> allUsers = fileDao.getAll("username", SharedFile.class);
         List<String> users = new ArrayList<>();
         for (SharedFile allUser : allUsers) {
-            users.add(allUser.getUsername());
+            if (!users.contains(allUser.getUsername())){
+                users.add(allUser.getUsername());
+            }
         }
         User user = (User) session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User("anon");
         mav.addObject("users", users);
@@ -97,9 +81,10 @@ public class FileController {
         return mav;
     }
 
-    @RequestMapping(value = "/search/person={username}", method = RequestMethod.GET)
-    public ModelAndView searchUser(@PathVariable String username, HttpSession session) {
+    @RequestMapping(value = "/searchSharedUser", method = RequestMethod.GET)
+    public ModelAndView searchUser(HttpSession session, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("sharedFilesIndex");
+        String username = request.getParameter("person");
         List<SharedFile> users = (List<SharedFile>) DataBaseWork.search("SharedFile", "username", username);
         List<String> usernames = new ArrayList<>();
         for (SharedFile file : users) {
@@ -108,7 +93,15 @@ public class FileController {
         User user = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User("anon");
         modelAndView.addObject("user", user);
         modelAndView.addObject("users", usernames);
-        System.out.println("search method");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/searchSharedFiles",method = RequestMethod.GET)
+    public ModelAndView searchFile(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView("sharedFiles");
+        String filename = request.getParameter("filename");
+        List<SharedFile> files = (List<SharedFile>) DataBaseWork.search("SharedFile", "path", filename);
+        modelAndView.addObject("files", files);
         return modelAndView;
 
     }
