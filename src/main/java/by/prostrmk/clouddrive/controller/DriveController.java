@@ -26,23 +26,21 @@ public class DriveController {
 
     private User user;
 
-    @RequestMapping(value = "/{username}",method = RequestMethod.GET)
-    public ModelAndView getFiles(@PathVariable String username, HttpSession session){
-        if (session.getAttribute("user")!=null){
-            user = (User)session.getAttribute("user");
-            if (!username.equals(user.getUsername())){
-                return new ModelAndView("message", "message", "You have no access to this page");
-            }
-        }else{
-            return new ModelAndView("message", "message", "You have no access to this page");
-        }
-
-
-        List filesByUsername = new FileDao().getByStringParamList("username",username, UploadedFile.class);
-        ModelAndView modelAndView = new ModelAndView("files", "elements", filesByUsername);
-        modelAndView.addObject("user", user);
-        return modelAndView;
-    }
+//    @RequestMapping(value = "/{username}",method = RequestMethod.GET)
+//    public ModelAndView getFiles(@PathVariable String username, HttpSession session){
+//        if (session.getAttribute("user")!=null){
+//            user = (User)session.getAttribute("user");
+//            if (!username.equals(user.getUsername())){
+//                return new ModelAndView("message", "message", "You have no access to this page");
+//            }
+//        }else{
+//            return new ModelAndView("message", "message", "You have no access to this page");
+//        }
+//        List filesByUsername = new FileDao().getByStringParamList("username",username, UploadedFile.class);
+//        ModelAndView modelAndView = new ModelAndView("files", "elements", filesByUsername);
+//        modelAndView.addObject("user", user);
+//        return modelAndView;
+//    }
 
     @RequestMapping(value = "/{username}/download/{filename}",method = RequestMethod.GET)
     public void downloadFile(@PathVariable String username, @PathVariable String filename, HttpServletRequest request, HttpServletResponse response){

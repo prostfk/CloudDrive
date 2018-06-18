@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>preview</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+    <link rel="stylesheet" type="text/css" href="/resources/css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Raleway", sans-serif
+        }
+    </style>
+</head>
+<body class="w3-light-grey animated fadeIn">
+
+
+<!-- w3-content defines a container for fixed size centered content,
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+    <!-- Header -->
+    <header class="w3-container w3-center w3-padding-32">
+        <h1><b>It News</b></h1>
+        <p>Welcome to the website of <span class="w3-tag">IT</span></p>
+    </header>
+
+    <!-- Grid -->
+    <div class="w3-row">
+
+
+
+        <div class="w3-col l4">
+            <!-- About Card -->
+            <div class="w3-card w3-margin w3-margin-top">
+                <!--<img src="/resource/pics/csharp.png" style="width:100%">-->
+                <div class="w3-container w3-white">
+                    <h4><b>Belarus it </b></h4>
+                    <p>This website is about Belarus it. Latest news is here.</p>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Posts -->
+            <div class="w3-card w3-margin">
+                <div class="w3-container w3-padding">
+                    <h4>Sections</h4>
+                </div>
+                <ul class="w3-ul w3-hoverable w3-white">
+                    <a href="/programming">
+                    <li class="w3-padding-16">
+                        <img src="icon.png" alt="Image" class="w3-left w3-margin-right"
+                             style="width:50px; height: 50px;"/>
+                        <span class="w3-large">Programming</span><br>
+                        <span>Click to see latest programming news</span>
+                    </li>
+                    </a>
+
+                    <a href="/science">
+                    <li class="w3-padding-16">
+                        <img src="icon.png" alt="Image" class="w3-left w3-margin-right"
+                             style="width:50px; height: 50px;"/>
+                        <span class="w3-large">Science</span><br>
+                        <span>Latest science news is here</span>
+                    </li>
+                    </a>
+
+                    <a href="/startup">
+                    <li class="w3-padding-16">
+                        <img src="icon.png" alt="Image" class="w3-left w3-margin-right"
+                             style="width:50px; height: 50px;"/>
+                        <span class="w3-large">Start Up</span><br>
+                        <span>Tap to see latest start up's</span>
+                    </li>
+                    </a>
+
+                    <a href="/other">
+                    <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+                        <img src="icon.png" alt="Image" class="w3-left w3-margin-right"
+                             style="width:50px; height: 50px;"/>
+                        <span class="w3-large">Other</span><br>
+                        <span>Other it news</span>
+                    </li>
+                    </a>
+
+                </ul>
+            </div>
+            <hr>
+
+
+			<div class="w3-card w3-margin w3-margin-top" style="display: none;">
+                <!--<img src="/resource/pics/csharp.png" style="width:100%">-->
+                <div class="w3-container w3-white">
+                    <h4><b>l</b></h4>
+                    <p></p>
+                </div>
+            </div>
+
+<div class="w3-card w3-margin w3-margin-top" style="display: none;">
+                <!--<img src="/resource/pics/csharp.png" style="width:100%">-->
+                <div class="w3-container w3-white">
+                    <h4><b>l</b></h4>
+                    <p></p>
+                </div>
+            </div>
+<div class="w3-card w3-margin w3-margin-top" style="display: none;">
+                <!--<img src="/resource/pics/csharp.png" style="width:100%">-->
+                <div class="w3-container w3-white">
+                    <h4><b>l</b></h4>
+                    <p></p>
+                </div>
+            </div>
+<div class="w3-card w3-margin w3-margin-top" style="display: none;">
+                <!--<img src="/resource/pics/csharp.png" style="width:100%">-->
+                <div class="w3-container w3-white">
+                    <h4><b>l</b></h4>
+                    <p></p>
+                </div>
+            </div>
+
+
+            <!-- Labels / tags -->
+            <!-- <div class="w3-card w3-margin">
+                <div class="w3-container w3-padding">
+                    <h4>Tags</h4>
+                </div>
+                <div class="w3-container w3-white">
+                    <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span
+                            class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span
+                            class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
+                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span
+                                class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span
+                                class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
+                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span
+                                class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span
+                                class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
+                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span
+                                class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span
+                                class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span
+                                class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+                    </p>https
+                </div>
+            </div> -->
+
+            <!-- END Introduction Menu -->
+        </div>
+
+
+        <!-- Blog entries -->
+        <div class="cont" th:each="article : ${articles}">
+            <div class="w3-col l8 s12">
+                <!-- Blog entry -->
+                <div class="w3-card-4 w3-margin w3-white">
+                    <img src="pic.jpg" width="100px;">
+                    <div class="w3-container">
+                        <h3><b>Title</b></h3>
+                        <h5>Programming<span class="w3-opacity">April 7, 2014</span></h5>
+                    </div>
+
+                    <div class="w3-container">
+                        <p>
+                        	A DIY universe mimics the physics of the infant cosmos, a team of physicists reports. The researchers hope to use their homemade cosmic analog to help explain the first instants of the universe’s 13.8-billion-year life.
+For their stand-in, the scientists created a Bose-Einstein condensate — a state of matter in which atoms are chilled until they all take on the same quantum state. Shaped into a tiny, rapidly expanding ring, the condensate grew from about 23 micrometers in diameter to about four times that size in just 15 milliseconds.  The behavior of that widening condensate re-created some of the physics of inflation, a brief period just after the Big Bang during which the universe rapidly ballooned in size (SN Online: 12/11/13) before settling into a more moderate expansion rate.
+
+In physics, seemingly unrelated systems can have similarities under the hood. Scientists have previously used Bose-Einstein condensates to simulate other mysteries of the cosmos, such as black holes (SN: 11/15/14, p. 14). And the comparison between Bose-Einstein condensates and inflation is particularly apt: A hypothetical substance called the inflaton field is thought to drive the universe’s extreme expansion, and particles associated with that field, known as inflatons, all take on the same quantum state, just as atoms do in the condensate.
+
+Scientists still don’t fully understand how inflation progressed, “so it’s hard to know how close our system is to what really happened,” says experimental physicist Gretchen Campbell of the Joint Quantum Institute in College Park, Md. “But the hope is that our system can be a good test-bed” for studying various theories. Already, the scientists have spotted several effects in their system similar to those predicted in the baby cosmos, the team reports April 19 in Physical Review X.
+
+As the scientists expanded the ring, sound waves that were traveling through the condensate increased in wavelength. That change was similar to the way in which light became redshifted — stretched to longer wavelengths and redder colors — as the universe enlarged.
+</p>
+                        <div class="w3-row">
+                            <div class="w3-col m8 s12">
+                                <p>
+                                    <a th:href="|/${article.type}/${article.id}|">
+                                        <input type="button" class="w3-button w3-padding-large w3-white w3-border" value="READ MORE »">
+                                    </a>
+                                </p>
+
+                            </div>
+
+                            <div class="w3-col m4 w3-hide-small">
+                                <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span
+                                        class="w3-tag" >5</span></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+            </div>
+        </div>
+
+
+        <!-- Blog entries -->
+        <div class="cont" th:each="article : ${articles}" style="">
+            <div class="w3-col l8 s12">
+                <!-- Blog entry -->
+                <div class="w3-card-4 w3-margin w3-white">
+                    <img src="pic.jpg" width="100px;">
+                    <div class="w3-container">
+                        <h3><b>Title</b></h3>
+                        <h5>Programming<span class="w3-opacity">April 7, 2014</span></h5>
+                    </div>
+
+                    <div class="w3-container">
+                        <p>
+                        	A DIY universe mimics the physics of the infant cosmos, a team of physicists reports. The researchers hope to use their homemade cosmic analog to help explain the first instants of the universe’s 13.8-billion-year life.
+For their stand-in, the scientists created a Bose-Einstein condensate — a state of matter in which atoms are chilled until they all take on the same quantum state. Shaped into a tiny, rapidly expanding ring, the condensate grew from about 23 micrometers in diameter to about four times that size in just 15 milliseconds.  The behavior of that widening condensate re-created some of the physics of inflation, a brief period just after the Big Bang during which the universe rapidly ballooned in size (SN Online: 12/11/13) before settling into a more moderate expansion rate.
+
+In physics, seemingly unrelated systems can have similarities under the hood. Scientists have previously used Bose-Einstein condensates to simulate other mysteries of the cosmos, such as black holes (SN: 11/15/14, p. 14). And the comparison between Bose-Einstein condensates and inflation is particularly apt: A hypothetical substance called the inflaton field is thought to drive the universe’s extreme expansion, and particles associated with that field, known as inflatons, all take on the same quantum state, just as atoms do in the condensate.
+
+Scientists still don’t fully understand how inflation progressed, “so it’s hard to know how close our system is to what really happened,” says experimental physicist Gretchen Campbell of the Joint Quantum Institute in College Park, Md. “But the hope is that our system can be a good test-bed” for studying various theories. Already, the scientists have spotted several effects in their system similar to those predicted in the baby cosmos, the team reports April 19 in Physical Review X.
+
+As the scientists expanded the ring, sound waves that were traveling through the condensate increased in wavelength. That change was similar to the way in which light became redshifted — stretched to longer wavelengths and redder colors — as the universe enlarged.
+</p>
+                        <div class="w3-row">
+                            <div class="w3-col m8 s12">
+                                <p>
+                                    <a th:href="|/${article.type}/${article.id}|">
+                                        <input type="button" class="w3-button w3-padding-large w3-white w3-border" value="READ MORE »">
+                                    </a>
+                                </p>
+
+                            </div>
+
+                            <div class="w3-col m4 w3-hide-small">
+                                <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span
+                                        class="w3-tag" >5</span></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+            </div>
+        </div>
+
+
+
+        <!-- Blog entries -->
+        <div class="cont" th:each="article : ${articles}">
+            <div class="w3-col l8 s12">
+                <!-- Blog entry -->
+                <div class="w3-card-4 w3-margin w3-white">
+                    <img src="pic.jpg" width="100px;">
+                    <div class="w3-container">
+                        <h3><b>Title</b></h3>
+                        <h5>Programming<span class="w3-opacity">April 7, 2014</span></h5>
+                    </div>
+
+                    <div class="w3-container">
+                        <p>
+                        	A DIY universe mimics the physics of the infant cosmos, a team of physicists reports. The researchers hope to use their homemade cosmic analog to help explain the first instants of the universe’s 13.8-billion-year life.
+For their stand-in, the scientists created a Bose-Einstein condensate — a state of matter in which atoms are chilled until they all take on the same quantum state. Shaped into a tiny, rapidly expanding ring, the condensate grew from about 23 micrometers in diameter to about four times that size in just 15 milliseconds.  The behavior of that widening condensate re-created some of the physics of inflation, a brief period just after the Big Bang during which the universe rapidly ballooned in size (SN Online: 12/11/13) before settling into a more moderate expansion rate.
+
+In physics, seemingly unrelated systems can have similarities under the hood. Scientists have previously used Bose-Einstein condensates to simulate other mysteries of the cosmos, such as black holes (SN: 11/15/14, p. 14). And the comparison between Bose-Einstein condensates and inflation is particularly apt: A hypothetical substance called the inflaton field is thought to drive the universe’s extreme expansion, and particles associated with that field, known as inflatons, all take on the same quantum state, just as atoms do in the condensate.
+
+Scientists still don’t fully understand how inflation progressed, “so it’s hard to know how close our system is to what really happened,” says experimental physicist Gretchen Campbell of the Joint Quantum Institute in College Park, Md. “But the hope is that our system can be a good test-bed” for studying various theories. Already, the scientists have spotted several effects in their system similar to those predicted in the baby cosmos, the team reports April 19 in Physical Review X.
+
+As the scientists expanded the ring, sound waves that were traveling through the condensate increased in wavelength. That change was similar to the way in which light became redshifted — stretched to longer wavelengths and redder colors — as the universe enlarged.
+</p>
+                        <div class="w3-row">
+                            <div class="w3-col m8 s12">
+                                <p>
+                                    <a th:href="|/${article.type}/${article.id}|">
+                                        <input type="button" class="w3-button w3-padding-large w3-white w3-border" value="READ MORE »">
+                                    </a>
+                                </p>
+
+                            </div>
+
+                            <div class="w3-col m4 w3-hide-small">
+                                <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span
+                                        class="w3-tag" >5</span></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+            </div>
+        </div>
+
+
+        <!-- Blog entries -->
+        <div class="cont" th:each="article : ${articles}">
+            <div class="w3-col l8 s12">
+                <!-- Blog entry -->
+                <div class="w3-card-4 w3-margin w3-white">
+                    <img src="pic.jpg" width="100px;">
+                    <div class="w3-container">
+                        <h3><b>Title</b></h3>
+                        <h5>Programming<span class="w3-opacity">April 7, 2014</span></h5>
+                    </div>
+
+                    <div class="w3-container">
+                        <p>
+                        	A DIY universe mimics the physics of the infant cosmos, a team of physicists reports. The researchers hope to use their homemade cosmic analog to help explain the first instants of the universe’s 13.8-billion-year life.
+For their stand-in, the scientists created a Bose-Einstein condensate — a state of matter in which atoms are chilled until they all take on the same quantum state. Shaped into a tiny, rapidly expanding ring, the condensate grew from about 23 micrometers in diameter to about four times that size in just 15 milliseconds.  The behavior of that widening condensate re-created some of the physics of inflation, a brief period just after the Big Bang during which the universe rapidly ballooned in size (SN Online: 12/11/13) before settling into a more moderate expansion rate.
+
+In physics, seemingly unrelated systems can have similarities under the hood. Scientists have previously used Bose-Einstein condensates to simulate other mysteries of the cosmos, such as black holes (SN: 11/15/14, p. 14). And the comparison between Bose-Einstein condensates and inflation is particularly apt: A hypothetical substance called the inflaton field is thought to drive the universe’s extreme expansion, and particles associated with that field, known as inflatons, all take on the same quantum state, just as atoms do in the condensate.
+
+Scientists still don’t fully understand how inflation progressed, “so it’s hard to know how close our system is to what really happened,” says experimental physicist Gretchen Campbell of the Joint Quantum Institute in College Park, Md. “But the hope is that our system can be a good test-bed” for studying various theories. Already, the scientists have spotted several effects in their system similar to those predicted in the baby cosmos, the team reports April 19 in Physical Review X.
+
+As the scientists expanded the ring, sound waves that were traveling through the condensate increased in wavelength. That change was similar to the way in which light became redshifted — stretched to longer wavelengths and redder colors — as the universe enlarged.
+</p>
+                        <div class="w3-row">
+                            <div class="w3-col m8 s12">
+                                <p>
+                                    <a th:href="|/${article.type}/${article.id}|">
+                                        <input type="button" class="w3-button w3-padding-large w3-white w3-border" value="READ MORE »">
+                                    </a>
+                                </p>
+
+                            </div>
+
+                            <div class="w3-col m4 w3-hide-small">
+                                <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span
+                                        class="w3-tag" >5</span></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+            </div>
+        </div>
+
+
+
+        <!-- Introduction menu -->
+
+        <!-- END GRID -->
+    </div>
+    <br>
+
+    <!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+    <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+    <a href="https://www.github.com/prostfk/itnews"><button class="w3-button w3-black w3-padding-large w3-margin-bottom">Link to git</button></a>
+  
+</footer>
+
+</body>
+</html>

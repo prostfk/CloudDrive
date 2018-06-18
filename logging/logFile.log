@@ -5,3 +5,8 @@
 2018-06-09 19:00:07 ERROR AbstractDao:62 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.SharedFile
 2018-06-09 19:00:22 ERROR AbstractDao:62 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.SharedFile
 2018-06-09 19:00:28 ERROR AbstractDao:62 - org.hibernate.MappingException: Unknown entity: by.prostrmk.clouddrive.model.entity.SharedFile
+2018-06-18 18:52:46 ERROR DataBaseWork:58 - Search Error
+2018-06-18 18:52:53 ERROR DataBaseWork:58 - Search Error
+2018-06-18 18:52:57 ERROR DataBaseWork:58 - Search Error
+2018-06-18 18:53:31 ERROR DataBaseWork:58 - Search Error
+2018-06-18 18:54:26 ERROR DataBaseWork:58 - Search Error: org.hibernate.hql.internal.ast.QuerySyntaxException: Users is not mapped [FROM Users A WHERE username LIKE '%roma%']

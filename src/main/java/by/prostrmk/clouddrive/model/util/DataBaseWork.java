@@ -47,15 +47,15 @@ public class DataBaseWork {
 
     }
 
-    public static List search(String column, String searchString) {
+    public static List search(String entityName, String column, String searchString) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            String hql = new StringBuilder().append("FROM Article A WHERE ").append(column).append(" LIKE '%").append(searchString).append("%'").toString();//
+            String hql = new StringBuilder().append("FROM ").append(entityName).append(" WHERE ").append(column).append(" LIKE '%").append(searchString).append("%'").toString();//
             Query query = session.createQuery(hql);//
             return query.list();
         } catch (Exception e) {
-            logger.error("Search Error");
+            logger.error("Search Error: " + e);
             return new ArrayList();
         } finally {
             assert session != null;
