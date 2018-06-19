@@ -52,6 +52,15 @@ public class FileController {
         return "redirect:/personalDisk/" + username;
     }
 
+    @RequestMapping(value = "/personalDisk/{username}/delete/{id}", method = RequestMethod.POST)
+    public String deleteFile(@PathVariable String username, @PathVariable Long id, HttpSession session){
+        FileDao fileDao = new FileDao();
+        UploadedFile file = (UploadedFile) fileDao.getById(id, UploadedFile.class);
+        fileDao.deleteFile(file.getServerPath());
+        fileDao.deleteEntity(file);
+        return "redirect:/personalDisk/" + username;
+    }
+
 
     @RequestMapping(value = "/sharedFiles/{username}", method = RequestMethod.GET)
     public ModelAndView sharedUserFiles(@PathVariable String username, HttpSession session) {

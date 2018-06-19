@@ -10,10 +10,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/resources/static/css/animate.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-anchor,.fa-file-o {font-size:200px}
+        .material-icons{
+            font-size: 20px;
+        }
+        .file-buttons{
+            display: inline;
+        }
     </style>
 </head>
 <body class="animated fadeIn">
@@ -27,13 +34,20 @@
         <h6 th:text="${file.getServerPath().split('/')[4]}"></h6>
         <p th:text="${file.getDateAndTime()}" style="font-size: 10px;"></p>
         <a th:href="|/${user.getUsername()}/download/${file.getServerPath().split('/')[4]}|">
-            <i class="fa fa-download"></i>
+            <i class="material-icons">file_download</i>
         </a><br/>
-        <form method="post" th:action="@{/personalDisk/{username}/share/{id}(username=${user.getUsername()}, id=${file.getId()})}">
-            <button type="submit" onclick="submitSharing()">
-                <i class="fa fa-share"></i>
-            </button>
-        </form>
+        <div class="file-buttons">
+            <form method="post" th:action="@{/personalDisk/{username}/share/{id}(username=${user.getUsername()}, id=${file.getId()})}">
+                <button type="submit" class="w3-button" onclick="submitSharing()">
+                    <i class="material-icons">share</i>
+                </button>
+            </form>
+            <form method="post" th:action="@{/personalDisk/{username}/delete/{id}(username=${user.getUsername()}, id=${file.getId()})}">
+                <button type="submit" class="w3-button">
+                    <i class="material-icons">delete</i>
+                </button>
+            </form>
+        </div>
 
     </div>
 </div>

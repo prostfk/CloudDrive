@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="1000000000000000"/>
+        <property name="maxUploadSize" value="1000000000000000000"/>
     </bean>
 
     <bean id="fileDao" class="by.prostrmk.clouddrive.dao.FileDao"/>
