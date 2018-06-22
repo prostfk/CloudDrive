@@ -24,15 +24,15 @@
 <div th:include="~{index.html :: navbar}"></div>
 
 
-<div class="w3-card-4">
-    <div style="align-items: center">
+<div class="w3-card-4" style="margin: 2% 10% 2% 10%; border-radius: 10px;">
+    <div style="align-items: center;  margin: 10% 2% 10% 2%;">
         <h1 class="w3-text-teal" th:text="${news.title}"></h1>
         <img th:src="${news.pathToPic}" width="50%" height="50%"/>
         <p th:text="${news.content}"></p>
+        <a th:href="|/editNews/${news.id}|">
+            <button style="margin-bottom: 2%" class="w3-btn w3-white w3-border w3-border-red w3-round">Edit</button>
+        </a>
     </div>
-    <a th:href="|/editNews/${news.id}|">
-        <button class="w3-button w3-black">Edit</button>
-    </a>
 </div>
 
 <script>

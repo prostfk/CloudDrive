@@ -29,20 +29,23 @@
 <div class="w3-main">
 
     <div th:each="news : ${newsList}">
-        <div class="w3-card-4" style="margin: auto; height: auto; max-width: 1000px;">
-            <div class="">
-                <h1 class="w3-text-teal" th:text="${news.title}"></h1>
-                <img th:src="${news.pathToPic}" style="width: 30%; height: 30%;"/>
-                <p th:text="${news.content}" style="text-overflow: ellipsis;"></p>
-            </div>
-            <div th:if="${user.equals('admin')}">
-                <a th:href="|/editNews/${news.id}|">
-                    <button class="w3-btn w3-white w3-border w3-border-blue w3-round">Edit Page</button>
+        <div class="w3-card-4" style="margin: auto; height: auto; border-radius: 10px; max-width: 1000px;">
+            <div style="margin: 5% 2% 5% 2%">
+                <div class="">
+                    <h1 class="w3-text-teal" th:text="${news.title}"></h1>
+                    <img th:src="${news.pathToPic}" style="width: 30%; height: 30%;"/>
+                    <p th:text="${news.content}" style="text-overflow: ellipsis;"></p>
+                </div>
+                <div th:if="${user.equals('admin')}">
+                    <a th:href="|/editNews/${news.id}|">
+                        <button class="w3-btn w3-white w3-border w3-border-blue w3-round">Edit Page</button>
+                    </a>
+                </div>
+                <a th:href="|/news/${news.id}|">
+                    <button style="margin-bottom: 2%" class="w3-btn w3-white w3-border w3-border-blue w3-round">Read more</button>
                 </a>
+
             </div>
-            <a th:href="|/news/${news.id}|">
-                <button class="w3-btn w3-white w3-border w3-border-blue w3-round">Read more</button>
-            </a>
         </div>
 
     </div>
