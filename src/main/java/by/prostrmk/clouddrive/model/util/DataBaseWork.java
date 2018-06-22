@@ -63,8 +63,6 @@ public class DataBaseWork {
         }
     }
 
-
-
     public static boolean checkUser(User user) {
         user.setPassword(HibernateUtil.hashString(user.getPassword()));
         Session session = HibernateUtil.getSessionFactory().openSession();

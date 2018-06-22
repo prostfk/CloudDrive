@@ -114,7 +114,23 @@ public class FileController {
         List<SharedFile> files = (List<SharedFile>) DataBaseWork.search("SharedFile", "path", filename);
         modelAndView.addObject("files", files);
         return modelAndView;
+    }
 
+    @RequestMapping(value = "/searchPrivateFiles", method = RequestMethod.POST)
+    public ModelAndView searchPrivate(HttpServletRequest request, HttpSession session){
+        String requestString = request.getParameter("filename");
+        user = session.getAttribute("user")==null ? new User("anon") : (User) session.getAttribute("user");
+        List<UploadedFile> allFiles = DataBaseWork.search("UploadedFile", "serverPath", requestString);
+        List<UploadedFile> files = new ArrayList<>();
+        for (UploadedFile file : allFiles) {
+            if (file.getUsername().equals(user.getUsername())){
+                files.add(file);
+            }
+        }
+        ModelAndView modelAndView = new ModelAndView("userFiles");
+        modelAndView.addObject("files", files);
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 
 

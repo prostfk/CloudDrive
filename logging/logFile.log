@@ -11,3 +11,4 @@
 2018-06-18 18:53:31 ERROR DataBaseWork:58 - Search Error
 2018-06-18 18:54:26 ERROR DataBaseWork:58 - Search Error: org.hibernate.hql.internal.ast.QuerySyntaxException: Users is not mapped [FROM Users A WHERE username LIKE '%roma%']
 2018-06-19 13:46:56 ERROR DataBaseWork:58 - Search Error: org.hibernate.hql.internal.ast.QuerySyntaxException: Users is not mapped [FROM Users WHERE username LIKE '%roma%']
+2018-06-22 22:18:48 ERROR DataBaseWork:74 - Search error: org.hibernate.exception.SQLGrammarException: could not extract ResultSet

@@ -29,6 +29,10 @@
 
 <div class="w3-row w3-padding-64">
 
+    <form action="/searchPrivateFiles" method="post">
+        <input class="w3-input w3-animated-input" style="border-radius: 15px;" type="text" name="filename" placeholder="Search your files">
+    </form>
+
     <div class="w3-third w3-center" th:each="file : ${files}">
         <i class="fa fa-file-o w3-padding-64 w3-text-red w3-margin-right"></i>
         <h6 th:text="${file.getServerPath().split('/')[4]}"></h6>
