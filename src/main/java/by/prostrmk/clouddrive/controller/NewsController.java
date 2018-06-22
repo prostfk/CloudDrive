@@ -95,9 +95,12 @@ public class NewsController {
     @RequestMapping(value = "/editNews/{id}", method = RequestMethod.POST)
     public String editNews(@PathVariable Long id, News news, @RequestParam(name = "file") MultipartFile file){
         FileDao fileDao = new FileDao();
-        fileDao.deleteFile(news.getPathToPic());
         if (!file.isEmpty()){
+            fileDao.deleteFile(news.getPathToPic());
             news.setPathToPic(fileDao.saveFile(file));
+        }else{
+            News byId = (News) fileDao.getById(id, News.class);
+            news.setPathToPic(byId.getPathToPic());
         }
         newsDao.updateEntity(news);
         return "redirect:/news";

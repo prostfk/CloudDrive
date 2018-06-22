@@ -41,14 +41,18 @@ public class MainController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String submit(@RequestParam MultipartFile file, HttpSession session){
-        if (file.isEmpty()){
+    public String submit(@RequestParam(name = "file") MultipartFile[] files, HttpSession session){
+        if (files.length == 0){
+            System.out.println("LENGTH EQUALS 0");
             return "redirect:/personalDisk/" + user.getUsername();
         }
+        FileDao fileDao = new FileDao();
         User user = (User) session.getAttribute("user");
-        new FileDao().saveFile(file, user.getUsername());
-        UploadedFile uploadedFile = new UploadedFile(user.getUsername(),"/resources/userFiles/" + user.getUsername() +  "/" + file.getOriginalFilename(),"/users/" + user.getUsername(), new Date().toString());
-        DataBaseWork.addToDataBase(uploadedFile);
+        for (MultipartFile file : files) {
+            fileDao.saveFile(file, user.getUsername());
+            UploadedFile uploadedFile = new UploadedFile(user.getUsername(),"/resources/userFiles/" + user.getUsername() +  "/" + file.getOriginalFilename(),"/users/" + user.getUsername(), new Date().toString());
+            DataBaseWork.addToDataBase(uploadedFile);
+        }
         return "redirect:/personalDisk/" + user.getUsername();
     }
 
