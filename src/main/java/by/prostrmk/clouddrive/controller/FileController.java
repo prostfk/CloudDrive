@@ -97,7 +97,9 @@ public class FileController {
         List<SharedFile> users = (List<SharedFile>) DataBaseWork.search("SharedFile", "username", username);
         List<String> usernames = new ArrayList<>();
         for (SharedFile file : users) {
-            usernames.add(file.getUsername());
+            if (!usernames.contains(file.getUsername())){
+                usernames.add(file.getUsername());
+            }
         }
         User user = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User("anon");
         modelAndView.addObject("user", user);

@@ -9,7 +9,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/resources/static/css/animate.css"/>
 <style>
-    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+    html, body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Roboto", sans-serif;
+    }
+
     .w3-sidebar {
         z-index: 3;
         width: 250px;
@@ -23,7 +26,7 @@
 
 <div th:include="~{index.html :: navbar}"></div>
 
-<div class="w3-main" >
+<div class="w3-main">
 
     <div th:each="news : ${newsList}">
         <div class="w3-card-4" style="margin: auto; height: auto; max-width: 1000px;">
@@ -57,6 +60,7 @@
 
     <!-- END MAIN -->
 </div>
+
 
 
 <script>

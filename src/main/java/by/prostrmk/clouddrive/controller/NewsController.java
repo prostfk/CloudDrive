@@ -36,7 +36,12 @@ public class NewsController {
             user = new User("Anon");
         }
         ModelAndView modelAndView = new ModelAndView("news");
-        List newsList = newsDao.getAll("id", News.class);
+        List<News> newsList = newsDao.getAll("id", News.class);
+        for (int i = 0; i < newsList.size(); i++) {
+            if (newsList.get(i).getContent().length() > 100){
+                newsList.get(i).setContent(newsList.get(i).getContent().substring(0,140) + "...");
+            }
+        }
         modelAndView.addObject("newsList", newsList);
         modelAndView.addObject("user", user);
         return modelAndView;
