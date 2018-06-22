@@ -9,21 +9,30 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/resources/static/css/animate.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <style>
         body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
         .fa-user-o {font-size:200px}
-
+        input:focus{
+            outline: none !important
+        }
     </style>
 </head>
 <body class="animated fadeIn">
 <div th:include="~{index.html :: navbar}"></div>
-<form action="/searchSharedUser">
-    <input class="w3-input w3-border w3-animated-input" type="text" name="person" placeholder="Search user">
-</form>
-<form action="/searchSharedFiles">
-    <input class="w3-input w3-border w3-animated-input" type="text" name="filename" placeholder="Search file">
-</form>
+<div id="search-menu">
+        <i class="material-icons" v-on:click="visible=!visible" style="color: red" >search</i>
+    <div class="search-bars" v-show="visible">
+        <form action="/searchSharedUser">
+            <input class="w3-input w3-animated-input" style="border-radius: 15px;" type="text" name="person" placeholder="Search user">
+        </form>
+        <form action="/searchSharedFiles">
+            <input class="w3-input w3-border w3-animated-input" style="border-radius: 15px;" type="text" name="filename" placeholder="Search file">
+        </form>
+    </div>
+</div>
 
 
 <div class="w3-row w3-padding-64">
@@ -36,6 +45,15 @@
 
 
 </div>
+
+<script>
+    var app = new Vue({
+        el: '#search-menu',
+        data: {
+            visible: false
+        }
+    });
+</script>
 
 <script>
     // Used to toggle the menu on small screens when clicking on the menu button
